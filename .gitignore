@@ -1,0 +1,8 @@
+*
+!.gitignore
+!.vimrc
+!.vim_runtime
+!.zshrc
+!.oh-my-zsh
+!.tmux.conf
+!.tmuxline.theme
