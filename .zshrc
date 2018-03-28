@@ -59,7 +59,7 @@ plugins=(
   git-remote-branch
   gitignore
   python
-  virtualenv
+#  virtualenv
   vi-mode
 )
 
