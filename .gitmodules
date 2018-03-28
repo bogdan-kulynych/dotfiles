@@ -43,6 +43,6 @@
 [submodule ".vim/pack/default/start/vim-gnupg"]
 	path = .vim/pack/default/start/vim-gnupg
 	url = https://github.com/jamessan/vim-gnupg.git
-[submodule "oh-my-zsh"]
-	path = oh-my-zsh
+[submodule ".oh-my-zsh"]
+	path = .oh-my-zssh
 	url = https://github.com/robbyrussell/oh-my-zsh.git
