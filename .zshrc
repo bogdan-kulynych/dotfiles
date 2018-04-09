@@ -59,13 +59,13 @@ plugins=(
   git-remote-branch
   gitignore
   python
-#  virtualenv
   vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
+# Custom PATH
+export PATH=.local/venvs/pipsi/bin:$PATH
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
