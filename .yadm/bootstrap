@@ -1,0 +1,11 @@
+#!/bin/bash
+
+ZSH_CUSTOM=~/.oh-my-zsh/custom
+
+cd "$HOME"
+
+echo "Init submodules"
+yadm submodule update --recursive --init
+
+echo "Install system packages"
+sudo apt install vim zsh python3-dev direnv
