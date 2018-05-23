@@ -67,17 +67,15 @@ source $ZSH/oh-my-zsh.sh
 # Custom PATH
 export PATH=$HOME/.local/bin/:$PATH
 
-# export MANPATH="/usr/local/man:$MANPATH"
+# CUDA things
+export PATH=/usr/local/cuda-9.1/bin${PATH:+:${PATH}}
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64"
+export CUDA_HOME=/usr/local/cuda
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+export EDITOR=vim
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
