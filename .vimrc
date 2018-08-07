@@ -468,8 +468,12 @@ nnoremap <silent> <leader>d :GitGutterToggle<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd FileType python noremap <buffer> <F8> :call Autopep8()<CR>
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Jedi-vim 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:jedi#documentation_command = "<leader>h"
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Don't do the horrible LaTeX integration
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:tex_conceal = ""
