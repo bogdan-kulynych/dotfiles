@@ -11,5 +11,5 @@ echo "Install system packages"
 sudo apt install vim zsh tmux python-dev python3-dev python-pip python3-pip direnv 
 
 echo "Install python packages"
-pip install --user pip
-pip3 install --user pip
+pip install --user --upgrade pip
+pip3 install --user --upgrade pip
