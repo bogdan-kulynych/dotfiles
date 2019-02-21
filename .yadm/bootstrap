@@ -8,7 +8,12 @@ echo "Init submodules"
 yadm submodule update --recursive --init
 
 echo "Install system packages"
-sudo apt install vim zsh tmux python-dev python3-dev python-pip python3-pip direnv thefuck
+# Tools.
+sudo apt install -y vim zsh tmux direnv
+# Apps.
+sudo apt install -y thefuck ranger 
+# Quick Python setup.
+sudo apt install -y python-dev python3-dev python-pip python3-pip python3-venv
 
 echo "Install python packages"
 pip install --user --upgrade pip
