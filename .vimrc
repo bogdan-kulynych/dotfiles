@@ -19,9 +19,9 @@ set autoread
 " Fast saving
 nmap <leader>w :w!<cr>
 
-" :W sudo saves the file 
+"" :W sudo saves the file
 " (useful for handling the permission-denied error)
-command W w !sudo tee % > /dev/null
+" command W w !sudo tee % > /dev/null
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -30,7 +30,7 @@ command W w !sudo tee % > /dev/null
 set so=7
 
 " Avoid garbled characters in Chinese language windows OS
-let $LANG='en' 
+let $LANG='en'
 set langmenu=en
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
@@ -62,23 +62,24 @@ set whichwrap+=<,>,h,l
 " Ignore case when searching
 set ignorecase
 
-" When searching try to be smart about cases 
+" When searching try to be smart about cases
 set smartcase
 
 " Highlight search results
 set hlsearch
 
 " Makes search act like search in modern browsers
-set incsearch 
+set incsearch
 
 " Don't redraw while executing macros (good performance config)
-set lazyredraw 
+set lazyredraw
 
 " For regular expressions turn magic on
 set magic
 
 " Show matching brackets when text indicator is over them
-set showmatch 
+set showmatch
+
 " How many tenths of a second to blink when matching brackets
 set mat=2
 
@@ -100,7 +101,7 @@ set foldcolumn=1
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
-syntax enable 
+syntax enable
 
 let g:solarized_contrast="high"
 let g:solarized_termtrans=1
@@ -145,14 +146,17 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 
+autocmd FileType html,xhtml,xml,css,javascript setlocal shiftwidth=2 tabstop=2
+
 " Linebreak on 500 characters
 set lbr
-set tw=500
+set tw=100
+set wrap
+map <c-j> gj
+map <c-k> gk
 
 set ai "Auto indent
 set si "Smart indent
-set wrap "Wrap lines
-
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
@@ -192,7 +196,7 @@ map <leader>ba :bufdo bd<cr>
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove 
+map <leader>tm :tabmove
 map <leader>tt :tabnext<cr>
 
 " Let 'tl' toggle between this and the last accessed tab
@@ -207,7 +211,7 @@ map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
-" Specify the behavior when switching between buffers 
+" Specify the behavior when switching between buffers
 try
   set switchbuf=useopen,usetab,newtab
   set stal=2
@@ -320,7 +324,7 @@ function! CmdLine(str)
     exe "menu Foo.Bar :" . a:str
     emenu Foo.Bar
     unmenu Foo
-endfunction 
+endfunction
 
 function! VisualSelection(direction, extra_filter) range
     let l:saved_reg = @"
@@ -382,7 +386,7 @@ let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
 """"""""""""""""""""""""""""""
 " => Vim grep
 """"""""""""""""""""""""""""""
-let Grep_Skip_Dirs = 'RCS CVS SCCS .svn generated'
+let Grep_Skip_Dirs = 'RCS CVS SCCS .svn .git generated'
 set grepprg=/bin/grep\ -nH
 
 
@@ -407,9 +411,6 @@ let g:multi_cursor_next_key="\<C-n>"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => lightline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:lightline = {
-      \ 'colorscheme': 'solarized',
-      \ }
 
 let g:lightline = {
       \ 'colorscheme': 'solarized',
@@ -434,28 +435,41 @@ let g:lightline = {
 
 let g:tmuxline_powerline_separators = 0
 
+" No need for the mode display, since lightline displays it already.
+set noshowmode
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Syntastic (syntax checker)
+" => Syntax
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Python
-let g:syntastic_python_checkers=['pyflakes']
 
-" Javascript
-let g:syntastic_javascript_checkers = ['jshint']
+ " Python
+ let g:syntastic_python_checkers=['pyflakes']
 
-" Go
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_go_checkers = ['go', 'golint', 'errcheck']
+ " Javascript
+ let g:syntastic_javascript_checkers = ['jshint']
 
-" Custom CoffeeScript SyntasticCheck
-func! SyntasticCheckCoffeescript()
-    let l:filename = substitute(expand("%:p"), '\(\w\+\)\.coffee', '.coffee.\1.js', '')
-    execute "tabedit " . l:filename
-    execute "SyntasticCheck"
-    execute "Errors"
-endfunc
-nnoremap <silent> <leader>c :call SyntasticCheckCoffeescript()<cr>
+ " Go
+ let g:syntastic_auto_loc_list = 1
+ let g:syntastic_go_checkers = ['go', 'golint', 'errcheck']
+
+ " Custom CoffeeScript SyntasticCheck
+ func! SyntasticCheckCoffeescript()
+     let l:filename = substitute(expand("%:p"), '\(\w\+\)\.coffee', '.coffee.\1.js', '')
+     execute "tabedit " . l:filename
+     execute "SyntasticCheck"
+     execute "Errors"
+ endfunc
+ nnoremap <silent> <leader>c :call SyntasticCheckCoffeescript()<cr>
+
+
+let b:ale_linters = ['flake8']
+
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['eslint'],
+\}
+let g:ale_fix_on_save = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Git gutter (Git diff)
@@ -464,12 +478,12 @@ let g:gitgutter_enabled=1
 nnoremap <silent> <leader>d :GitGutterToggle<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Autopep8 
+" => Autopep8
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd FileType python noremap <buffer> <F8> :call Autopep8()<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Jedi-vim 
+" => Jedi-vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:jedi#documentation_command = "<leader>h"
 

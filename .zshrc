@@ -59,7 +59,6 @@ plugins=(
   git-remote-branch
   gitignore
   python
-  # vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -77,33 +76,16 @@ export LANG=en_US.UTF-8
 
 export EDITOR=vim
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+# Terminal colors
+export TERM=xterm-256color
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
+# Compilation flags
+export ARCHFLAGS="-arch x86_64"
 
 # Set shorter key lag for Vi-mode
 export KEYTIMEOUT=1
 
 # Direnv
 eval "$(direnv hook zsh)"
-
-# # Needed for Vi-mode:
-# # Vi-mode breaks the arrow autocompletion
-# # https://github.com/robbyrussell/oh-my-zsh/issues/1720
-# # start typing + [Up-Arrow] - fuzzy find history forward
-# if [[ "${terminfo[kcuu1]}" != "" ]]; then
-#   autoload -U up-line-or-beginning-search
-#   zle -N up-line-or-beginning-search
-#   bindkey "${terminfo[kcuu1]}" up-line-or-beginning-search
-# fi
-# # start typing + [Down-Arrow] - fuzzy find history backward
-# if [[ "${terminfo[kcud1]}" != "" ]]; then
-#   autoload -U down-line-or-beginning-search
-#   zle -N down-line-or-beginning-search
-#   bindkey "${terminfo[kcud1]}" down-line-or-beginning-search
-# fi
-
 
 eval $(thefuck --alias)
