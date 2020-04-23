@@ -462,6 +462,15 @@ set noshowmode
  endfunc
  nnoremap <silent> <leader>c :call SyntasticCheckCoffeescript()<cr>
 
+" Rust
+let g:syntastic_rust_checkers = ['rustc']
+let g:rustfmt_autosave = 1
+
+au FileType rust nmap gd <Plug>(rust-def)
+au FileType rust nmap gs <Plug>(rust-def-split)
+au FileType rust nmap gx <Plug>(rust-def-vertical)
+au FileType rust nmap <leader>gd <Plug>(rust-doc)
+
 
 let b:ale_linters = ['flake8']
 
@@ -471,6 +480,30 @@ let g:ale_fixers = {
 \}
 let g:ale_fix_on_save = 1
 
+" LanguageClient
+set runtimepath+=~/.vim/pack/default/start/LanguageClient-neovim
+
+set hidden
+
+" << LSP >> {{{
+
+let g:LanguageClient_autoStart = 0
+nnoremap <leader>lcs :LanguageClientStart<CR>
+
+" if you want it to turn on automatically
+" let g:LanguageClient_autoStart = 1
+
+let g:LanguageClient_serverCommands = {
+    \ 'python': ['pyls'],
+    \ 'rust': ['rustup', 'run', 'stable', 'rls'] }
+
+noremap <silent> H :call LanguageClient_textDocument_hover()<CR>
+noremap <silent> Z :call LanguageClient_textDocument_definition()<CR>
+noremap <silent> R :call LanguageClient_textDocument_rename()<CR>
+noremap <silent> S :call LanugageClient_textDocument_documentSymbol()<CR>
+" noremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+
+" }}}
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Git gutter (Git diff)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
