@@ -63,8 +63,8 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-# Custom PATH
-export PATH=$HOME/.local/bin/:$PATH
+# Custom PATH: .local, Rust
+export PATH=$HOME/.local/bin/:$HOME/.cargo/bin:$PATH
 
 # CUDA things
 export PATH=/usr/local/cuda-9.1/bin${PATH:+:${PATH}}
@@ -74,6 +74,7 @@ export CUDA_HOME=/usr/local/cuda
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
+# Editor
 export EDITOR=vim
 
 # Terminal colors
@@ -88,4 +89,14 @@ export KEYTIMEOUT=1
 # Direnv
 eval "$(direnv hook zsh)"
 
+# Thefuck
 eval $(thefuck --alias)
+
+# NPM
+NPM_PACKAGES="${HOME}/.npm-packages"
+
+export PATH="$PATH:$NPM_PACKAGES/bin"
+
+# Preserve MANPATH if you already defined it somewhere in your config.
+# Otherwise, fall back to `manpath` so we can inherit from `/etc/manpath`.
+export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
