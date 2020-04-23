@@ -10,6 +10,7 @@ filetype indent on
 
 " Set to auto read when a file is changed from the outside
 set autoread
+au FocusGained,BufEnter * :checktime
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
@@ -523,4 +524,16 @@ let g:jedi#documentation_command = "<leader>h"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Don't do the horrible LaTeX integration
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:tex_conceal = ""
+let g:tex_flavor='latex'
+" let g:vimtex_view_method='evince'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal = ''
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Jupytext
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:jupytext_enable = 1
+let g:jupytext_command = 'jupytext'
+let g:jupytext_fmt = 'md'
+
