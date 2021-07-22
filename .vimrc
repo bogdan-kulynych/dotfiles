@@ -441,27 +441,27 @@ set noshowmode
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Syntax
+" => Syntastic
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
- " Python
- let g:syntastic_python_checkers=['pyflakes']
+" Python
+let g:syntastic_python_checkers=['pyflakes']
 
- " Javascript
- let g:syntastic_javascript_checkers = ['jshint']
+" Javascript
+let g:syntastic_javascript_checkers = ['jshint']
 
- " Go
- let g:syntastic_auto_loc_list = 1
- let g:syntastic_go_checkers = ['go', 'golint', 'errcheck']
+" Go
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_go_checkers = ['go', 'golint', 'errcheck']
 
- " Custom CoffeeScript SyntasticCheck
- func! SyntasticCheckCoffeescript()
-     let l:filename = substitute(expand("%:p"), '\(\w\+\)\.coffee', '.coffee.\1.js', '')
-     execute "tabedit " . l:filename
-     execute "SyntasticCheck"
-     execute "Errors"
- endfunc
- nnoremap <silent> <leader>c :call SyntasticCheckCoffeescript()<cr>
+" Custom CoffeeScript SyntasticCheck
+func! SyntasticCheckCoffeescript()
+    let l:filename = substitute(expand("%:p"), '\(\w\+\)\.coffee', '.coffee.\1.js', '')
+    execute "tabedit " . l:filename
+    execute "SyntasticCheck"
+    execute "Errors"
+endfunc
+nnoremap <silent> <leader>c :call SyntasticCheckCoffeescript()<cr>
 
 " Rust
 let g:syntastic_rust_checkers = ['rustc']
@@ -472,11 +472,13 @@ au FileType rust nmap gs <Plug>(rust-def-split)
 au FileType rust nmap gx <Plug>(rust-def-vertical)
 au FileType rust nmap <leader>gd <Plug>(rust-doc)
 
-
-let b:ale_linters = ['flake8']
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => ALE
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'python': ['black'],
 \   'javascript': ['eslint'],
 \}
 let g:ale_fix_on_save = 1
@@ -502,19 +504,14 @@ noremap <silent> H :call LanguageClient_textDocument_hover()<CR>
 noremap <silent> Z :call LanguageClient_textDocument_definition()<CR>
 noremap <silent> R :call LanguageClient_textDocument_rename()<CR>
 noremap <silent> S :call LanugageClient_textDocument_documentSymbol()<CR>
-" noremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 
 " }}}
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Git gutter (Git diff)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:gitgutter_enabled=1
 nnoremap <silent> <leader>d :GitGutterToggle<cr>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Autopep8
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd FileType python noremap <buffer> <F8> :call Autopep8()<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Jedi-vim
@@ -536,4 +533,3 @@ let g:tex_conceal = ''
 let g:jupytext_enable = 1
 let g:jupytext_command = 'jupytext'
 let g:jupytext_fmt = 'md'
-
