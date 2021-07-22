@@ -40,12 +40,18 @@
 [submodule ".vim/pack/default/start/vim-pandoc-syntax"]
 	path = .vim/pack/default/start/vim-pandoc-syntax
 	url = https://github.com/vim-pandoc/vim-pandoc-syntax.git
-[submodule ".vim/pack/default/start/vim-gnupg"]
-	path = .vim/pack/default/start/vim-gnupg
-	url = https://github.com/jamessan/vim-gnupg.git
 [submodule ".oh-my-zsh"]
 	path = .oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git
 [submodule ".vim/pack/default/start/ale"]
 	path = .vim/pack/default/start/ale
 	url = https://github.com/w0rp/ale.git
+[submodule ".vim/pack/default/start/black"]
+	path = .vim/pack/default/start/black
+	url = https://github.com/psf/black.git
+[submodule ".vim/pack/default/start/vim-racer"]
+	path = .vim/pack/default/start/vim-racer
+	url = https://github.com/racer-rust/vim-racer.git
+[submodule ".vim/pack/default/start/vimtex"]
+	path = .vim/pack/default/start/vimtex
+	url = https://github.com/lervag/vimtex.git
