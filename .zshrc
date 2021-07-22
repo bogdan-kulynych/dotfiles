@@ -62,8 +62,8 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-# Custom PATH: .local, Rust
-export PATH=$HOME/.local/bin/:$HOME/.cargo/bin:$PATH
+# Custom PATH: .local, Rust, Ruby
+export PATH=$HOME/.local/bin/:$HOME/.cargo/bin:$HOME/.gem/ruby/2.5.0/bin/:$PATH
 
 # CUDA things
 export PATH=/usr/local/cuda-9.1/bin${PATH:+:${PATH}}
@@ -103,7 +103,12 @@ export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
 # Meeting notes.
 meet () {
     d=`date -u '+%Y-%m-%d'`
-    file="${HOME}/doc/meeting/${d}-${1}.md"
+    file="${HOME}/Sync/Progress/meetings/${d}-${1}.md"
     vim "$file"
     echo "Edited $file"
+}
+
+# Todo list.
+todo () {
+    vim "${HOME}/Sync/Basics/todo.txt"
 }
