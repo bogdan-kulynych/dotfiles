@@ -56,7 +56,6 @@ ZSH_THEME="dst"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git-remote-branch
   gitignore
   python
 )
