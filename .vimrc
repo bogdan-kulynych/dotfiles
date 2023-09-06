@@ -484,7 +484,7 @@ let g:ale_fixers = {
 let g:ale_fix_on_save = 1
 
 " LanguageClient
-set runtimepath+=~/.vim/pack/default/start/LanguageClient-neovim
+" set runtimepath+=~/.vim/pack/default/start/LanguageClient-neovim
 
 set hidden
 
@@ -496,9 +496,10 @@ nnoremap <leader>lcs :LanguageClientStart<CR>
 " if you want it to turn on automatically
 " let g:LanguageClient_autoStart = 1
 
-let g:LanguageClient_serverCommands = {
-    \ 'python': ['pyls'],
-    \ 'rust': ['rustup', 'run', 'stable', 'rls'] }
+" let g:LanguageClient_serverCommands = {
+"     \ 'python': ['pyls'],
+"     \ 'rust': ['rustup', 'run', 'stable', 'rls']
+" }
 
 noremap <silent> H :call LanguageClient_textDocument_hover()<CR>
 noremap <silent> Z :call LanguageClient_textDocument_definition()<CR>
@@ -517,6 +518,7 @@ nnoremap <silent> <leader>d :GitGutterToggle<cr>
 " => Jedi-vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:jedi#documentation_command = "<leader>h"
+let g:jedi#completions_enabled = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Don't do the horrible LaTeX integration
@@ -524,7 +526,9 @@ let g:jedi#documentation_command = "<leader>h"
 let g:tex_flavor='latex'
 " let g:vimtex_view_method='evince'
 let g:vimtex_quickfix_mode=0
-set conceallevel=1
+set conceallevel=0
+let g:indentLine_enabled = 0
+let g:indentLine_conceallevel = 0
 let g:tex_conceal = ''
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
