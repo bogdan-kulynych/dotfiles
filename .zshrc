@@ -88,6 +88,9 @@ export KEYTIMEOUT=1
 # Direnv
 eval "$(direnv hook zsh)"
 
+# Docker
+alias docker-cleanup='docker rmi $(docker images | grep "^<none>" | awk "{print $3}")'
+
 # Thefuck
 eval $(thefuck --alias)
 
@@ -100,15 +103,10 @@ export PATH="$PATH:$NPM_PACKAGES/bin"
 # Otherwise, fall back to `manpath` so we can inherit from `/etc/manpath`.
 export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
 
-# Meeting notes.
-meet () {
-    d=`date -u '+%Y-%m-%d'`
-    file="${HOME}/Sync/Progress/meetings/${d}-${1}.md"
-    vim "$file"
-    echo "Edited $file"
-}
+# Load pyenv automatically:
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
-# Todo list.
-todo () {
-    vim "${HOME}/Sync/Basics/todo.txt"
-}
+# Load pyenv-virtualenv automatically:
+eval "$(pyenv virtualenv-init -)"
