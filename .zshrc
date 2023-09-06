@@ -63,7 +63,7 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # Custom PATH: .local, Rust, Ruby
-export PATH=$HOME/.local/bin/:$HOME/.cargo/bin:$HOME/.gem/ruby/2.5.0/bin/:$PATH
+export PATH=$HOME/.local/bin/:$HOME/.cargo/bin:$HOME/.rbenv/bin:$PATH
 
 # CUDA things
 export PATH=/usr/local/cuda-9.1/bin${PATH:+:${PATH}}
@@ -93,6 +93,9 @@ alias docker-cleanup='docker rmi $(docker images | grep "^<none>" | awk "{print 
 
 # Thefuck
 eval $(thefuck --alias)
+
+# Rbenv
+eval "$(rbenv init -)"
 
 # NPM
 NPM_PACKAGES="${HOME}/.npm-packages"
