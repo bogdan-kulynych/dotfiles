@@ -24,3 +24,5 @@ pipx install black
 pipx install poetry
 pipx install jupytext
 pipx install nbdime
+
+sudo apt install fonts-freefont-ttf fonts-linuxlibertine fonts-freefont-otf texlive-fonts-recommended --yes
