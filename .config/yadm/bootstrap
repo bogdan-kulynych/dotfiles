@@ -25,4 +25,7 @@ pipx install poetry
 pipx install jupytext
 pipx install nbdime
 
+curl https://pyenv.run | bash
+
+echo "Tex stuff"
 sudo apt install fonts-freefont-ttf fonts-linuxlibertine fonts-freefont-otf texlive-fonts-recommended --yes
